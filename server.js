@@ -3,6 +3,7 @@ const app = express();
 const http = require("http");
 const path = require("path");
 const { Server } = require("socket.io");
+const axios = require("axios"); // Add axios
 const ACTIONS = require("./src/Actions");
 
 const server = http.createServer(app);
@@ -65,3 +66,27 @@ io.on("connection", (socket) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+// Reloader script to keep the Render instance from spinning down
+const url = `https://realtime-coding-environment-1.onrender.com/`; // Your Render URL
+const interval = 30000; // Interval in milliseconds (30 seconds)
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log(
+        `Reloaded at ${new Date().toISOString()}: Status Code ${
+          response.status
+        }`
+      );
+    })
+    .catch((error) => {
+      console.error(
+        `Error reloading at ${new Date().toISOString()}:`,
+        error.message
+      );
+    });
+}
+
+setInterval(reloadWebsite, interval);
