@@ -71,12 +71,12 @@ const Home = () => {
           </span>
         </div>
       </div>
-      // <footer>
-      //   <h4>
-      //     Built&nbsp; by &nbsp;
-      //     <a href="https://github.com/milind-cs">Milind</a>
-      //   </h4>
-      // </footer>
+      {/* <footer>
+        <h4>
+          Built&nbsp; by &nbsp;
+          <a href="https://github.com/milind-cs">Milind</a>
+        </h4>
+      </footer> */}
     </div>
   );
 };
